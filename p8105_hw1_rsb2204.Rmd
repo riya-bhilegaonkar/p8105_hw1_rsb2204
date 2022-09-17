@@ -1,8 +1,33 @@
 ---
-title: "p8105_hw1_rsb2204"
+title: "Data Science HW 1"
 author: "Riya Bhilegaonkar"
 date: "2022-09-17"
 output: github_document
 ---
 
+Problem 1
 
+Load the penguins dataset:
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+Descriptions of the `penguins` dataset:
+The data in this dataset contains information about different penguins including their species, location (island), bill length (in mm), bill depth (in mm), flipper length (in mm), body mass (in g), sex and the year.
+
+The size of the dataset is 344 x 8.
+The number of rows in the dataset is 344.
+```{r}
+nrow(penguins)
+```
+
+The number of columns in the dataset is 8.
+```{r}
+ncol(penguins)
+```
+
+The mean flipper length is 200.9 mm.
+```{r}
+summary(penguins)
+```
