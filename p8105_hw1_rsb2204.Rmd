@@ -5,16 +5,22 @@ date: "2022-09-17"
 output: github_document
 ---
 
+Load the tidyverse library
+```{r}
+library(tidyverse)
+```
+
 Problem 1
 
 Load the penguins dataset:
 
 ```{r}
 data("penguins", package = "palmerpenguins")
+penguins_df <- penguins
 ```
 
 Descriptions of the `penguins` dataset:
-The data in this dataset contains information about different penguins including their species, location (island), bill length (in mm), bill depth (in mm), flipper length (in mm), body mass (in g), sex and the year.
+The data in this dataset contains information about different penguins including their species, location (islands of Palmer Archipelago, Antartica (Biscoe, Dream or Torgersen)), bill length (in mm), bill depth (in mm), flipper length (in mm), body mass (in g), sex and the year.
 
 The size of the dataset is 344 x 8.
 The number of rows in the dataset is 344.
@@ -27,7 +33,18 @@ The number of columns in the dataset is 8.
 ncol(penguins)
 ```
 
-The mean flipper length is 200.9 mm.
+The mean flipper length is 200.9 mm, which we find using the summary function.
 ```{r}
 summary(penguins)
 ```
+
+Making a scatterplot of `flipper_length_mm` vs `bill_length_mm`
+```{r}
+ggplot(penguins_df, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + geom_point()
+```
+
+Exporting the scatterplot to project directory using ggsave:
+```{r}
+ggsave("scatter_plot.pdf", height = 4, width = 6
+```
+
