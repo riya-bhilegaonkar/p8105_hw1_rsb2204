@@ -16,7 +16,6 @@ Load the penguins dataset:
 
 ```{r}
 data("penguins", package = "palmerpenguins")
-penguins_df <- penguins
 ```
 
 Descriptions of the `penguins` dataset:
@@ -45,6 +44,6 @@ ggplot(penguins_df, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) +
 
 Exporting the scatterplot to project directory using ggsave:
 ```{r}
-ggsave("scatter_plot.pdf", height = 4, width = 6
+ggsave("scatter_plot.pdf", height = 4, width = 6)
 ```
 
