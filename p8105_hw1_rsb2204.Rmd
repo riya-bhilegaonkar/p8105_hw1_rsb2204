@@ -10,7 +10,7 @@ Load the tidyverse library
 library(tidyverse)
 ```
 
-Problem 1
+## Problem 1
 
 Load the penguins dataset:
 
@@ -39,7 +39,7 @@ summary(penguins)
 
 Making a scatterplot of `flipper_length_mm` vs `bill_length_mm`
 ```{r}
-ggplot(penguins_df, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + geom_point()
+ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + geom_point()
 ```
 
 Exporting the scatterplot to project directory using ggsave:
@@ -47,3 +47,58 @@ Exporting the scatterplot to project directory using ggsave:
 ggsave("scatter_plot.pdf", height = 4, width = 6)
 ```
 
+## Problem 2
+Create a data frame comprised of:
+
+- a random sample of size 10 from a standard Normal distribution
+- a logical vector indicating whether elements of the sample are greater than 0
+- a character vector of length 10
+- a factor vector of length 10, with 3 different factor “levels”
+
+```{r}
+p2_df <- tibble(
+  norm_sample = rnorm(10),
+  norm_samp_pos = norm_sample > 0,
+  char_vec = c("a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9", "a10"),
+  factor_vec = factor(c("small", "medium", "large", "small", "medium", "large", "small", "medium", "large", "small"))
+)
+
+```
+
+Taking the mean of each variable in the dataframe.
+Taking the mean of the `norm_sample` variable:
+```{r}
+mean(pull(p2_df, norm_sample))
+```
+
+The mean of `norm_sample` is 0.1389.
+
+Taking the mean of the `norm_samp_pos` variable:
+```{r}
+mean(pull(p2_df, norm_samp_pos))
+```
+
+The mean of `norm_samp_pos` is 0.7.
+
+Taking the mean of the `char_vec` variable:
+```{r, eval = FALSE}
+mean(pull(p2_df, char_vec))
+```
+
+As the values in the variable are not numeric or logical, the mean does not work and the returns the value of NA. 
+
+Taking the mean of the `factor_vec` variable:
+```{r, eval = FALSE}
+mean(pull(p2_df, factor_vec))
+```
+
+As the values in the variable are not numeric or logical, the mean does not work and the returns the value of NA. 
+
+Now applying the `as.numeric` function 
+```{r, eval = FALSE}
+mean(pull(p2_df, as.numeric(norm_samp_pos)))
+mean(pull(p2_df, as.numeric(char_vec)))
+mean(pull(p2_df, as.numeric(factor_vec)))
+```
+
+When we use the as.numeric function we similarly obtain NA for the mean of the character vector and the factor vector, as R is not able to convert these multi-level variables or numerous options into true or false values or 0 or 1 as bianry variables. However in the case of the logical vector, R treats TRUE or FALSE as the value of 1 or 0 and hence calculates the mean using the averages of those values.
