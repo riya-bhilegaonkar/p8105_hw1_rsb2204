@@ -101,4 +101,4 @@ mean(pull(p2_df, as.numeric(char_vec)))
 mean(pull(p2_df, as.numeric(factor_vec)))
 ```
 
-When we use the as.numeric function we similarly obtain NA for the mean of the character vector and the factor vector, as R is not able to convert these multi-level variables or numerous options into true or false values or 0 or 1 as bianry variables. However in the case of the logical vector, R treats TRUE or FALSE as the value of 1 or 0 and hence calculates the mean using the averages of those values.
+When we use the as.numeric function we similarly obtain NA for the mean of the character vector and the factor vector, as R is not able to convert these multi-level variables or numerous options into true or false values or 0 or 1 as bianry variables. However in the case of the logical vector, R treats TRUE or FALSE as the value of 1 or 0 and hence calculates the mean using the averages of those values. This does help us understand why we get NA values for the means of character or factor vectors versus the case of logical vectors.
